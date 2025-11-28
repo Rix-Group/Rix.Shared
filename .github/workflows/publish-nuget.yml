@@ -1,0 +1,62 @@
+name: Deploy Rix.AutoMapper NuGet Package
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/Rix.Shared/Rix.AutoMapper/**'
+  workflow_dispatch:
+    # Added to be able to trigger manually
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+    
+    env:
+      PROJECT_PATH: 'src/Rix.Shared/Rix.AutoMapper/Rix.AutoMapper.csproj'
+      TEST_PROJECT_PATH: 'src/Rix.Shared/Rix.AutoMapper.Tests/Rix.AutoMapper.Tests.csproj'
+      
+    steps:
+      - name: ⬇️ Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: ⚙️ Restore Dependencies
+        run: |
+          dotnet restore ${{ env.PROJECT_PATH }}
+          dotnet restore ${{ env.TEST_PROJECT_PATH }}
+
+      - name: ✅ Run Unit Tests
+        run: |
+          dotnet test ${{ env.TEST_PROJECT_PATH }} \
+            --configuration Release \
+            --no-restore
+        
+      - name: 📦 Build and Pack NuGet
+        id: pack
+        run: |
+          dotnet pack ${{ env.PROJECT_PATH }} \
+            --configuration Release \
+            /p:Version=1.0.${{ github.run_number }} \
+            --output nupkg
+        
+      - name: ⬆️ Publish to GitHub Packages NuGet Feed
+        run: |
+          DOTNET_SOURCE=https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+          PACKAGE_PATH=$(find ./nupkg -name "Rix.AutoMapper*.nupkg" | head -n 1)
+          
+          echo "Pushing package: ${PACKAGE_PATH} to ${DOTNET_SOURCE}"
+          
+          dotnet nuget push $PACKAGE_PATH \
+            --source $DOTNET_SOURCE \
+            --api-key ${{ secrets.GITHUB_TOKEN }} \
+            --skip-duplicate

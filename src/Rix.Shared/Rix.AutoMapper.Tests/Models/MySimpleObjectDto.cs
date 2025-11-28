@@ -6,5 +6,5 @@ internal class MySimpleObjectDto
     internal int Age { get; set; }
     public long? Height { get; set; }
 
-    public string NotCopied { get; set; }
+    public string? NotCopied { get; set; }
 }
