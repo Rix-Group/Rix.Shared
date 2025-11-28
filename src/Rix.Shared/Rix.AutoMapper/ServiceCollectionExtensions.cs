@@ -6,6 +6,12 @@ namespace Rix.AutoMapper;
 
 public static class ServiceCollectionExtensions
 {
+    /// <summary>
+    /// Adds a singleton <see cref="IRixMapper"/> to the <see cref="IServiceCollection"/> with custom <see cref="IMappingProfile"/>s.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <param name="profiles">Custom mapping profiles.</param>
+    /// <returns>The service collection.</returns>
     public static IServiceCollection AddMapping(this IServiceCollection services, IEnumerable<IMappingProfile> profiles)
     {
         services.AddSingleton<IRixMapper>(_ => new RixMapper(profiles));

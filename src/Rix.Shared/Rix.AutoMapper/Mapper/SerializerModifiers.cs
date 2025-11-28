@@ -5,6 +5,9 @@ namespace Rix.AutoMapper.Mapper;
 
 internal static class SerializerModifiers
 {
+    /// <summary>
+    /// Includes internal properties when serializing.
+    /// </summary>
     internal static void IncludeInternalProperties(JsonTypeInfo jsonTypeInfo)
     {
         // Only modify contracts for object types (classes/structs)
