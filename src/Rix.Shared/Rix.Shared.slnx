@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Rix.AutoMapper.Tests/Rix.AutoMapper.Tests.csproj" />
+  <Project Path="Rix.AutoMapper/Rix.AutoMapper.csproj" />
+</Solution>
