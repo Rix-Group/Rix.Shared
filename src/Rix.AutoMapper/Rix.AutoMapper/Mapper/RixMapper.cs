@@ -5,7 +5,7 @@ using System.Text.Json.Serialization.Metadata;
 
 namespace Rix.AutoMapper.Mapper;
 
-public class RixMapper(params IEnumerable<IMappingProfile> profiles) : IRixMapper
+public class RixMapper(IEnumerable<IMappingProfile> profiles) : IRixMapper
 {
     private readonly IMappingProfile[] _profiles = [.. profiles];
     private readonly JsonSerializerOptions _options = new()

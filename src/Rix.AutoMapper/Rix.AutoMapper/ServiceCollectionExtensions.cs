@@ -14,7 +14,9 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection.</returns>
     public static IServiceCollection AddMapping(this IServiceCollection services, params IEnumerable<IMappingProfile> profiles)
     {
-        services.AddSingleton<IRixMapper>(_ => new RixMapper(profiles));
+        foreach (IMappingProfile profile in profiles)
+            services.AddSingleton(profile);
+        services.AddSingleton<IRixMapper, RixMapper>();
         return services;
     }
 }

@@ -23,7 +23,7 @@ public class ComplexTests
         // Check circular references are not copied
         obj.Reference = obj;
 
-        IRixMapper mapper = new RixMapper();
+        IRixMapper mapper = new RixMapper([]);
 
         // ACT
         MyComplexObjectDto result = mapper.Map<MyComplexObject, MyComplexObjectDto>(obj);

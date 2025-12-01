@@ -17,7 +17,7 @@ public class SimpleTests
             Height = 2
         };
 
-        IRixMapper mapper = new RixMapper();
+        IRixMapper mapper = new RixMapper([]);
 
         // ACT
         MySimpleObjectDto result = mapper.Map<MySimpleObject, MySimpleObjectDto>(obj);
@@ -40,7 +40,7 @@ public class SimpleTests
             Height = 2
         };
 
-        IRixMapper mapper = new RixMapper(new MySimpleObjectProfile());
+        IRixMapper mapper = new RixMapper([new MySimpleObjectProfile()]);
 
         // ACT
         MySimpleObjectDto result = mapper.Map<MySimpleObject, MySimpleObjectDto>(obj);
