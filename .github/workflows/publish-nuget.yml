@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'src/Rix.Shared/Rix.AutoMapper/**'
+      - 'src/Rix.AutoMapper/**'
   workflow_dispatch:
     # Added to be able to trigger manually
 
