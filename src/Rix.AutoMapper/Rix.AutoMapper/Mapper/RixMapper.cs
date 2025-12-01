@@ -1,5 +1,6 @@
 ﻿using Rix.AutoMapper.Profile;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 
 namespace Rix.AutoMapper.Mapper;
@@ -9,6 +10,7 @@ public class RixMapper(params IEnumerable<IMappingProfile> profiles) : IRixMappe
     private readonly IMappingProfile[] _profiles = [.. profiles];
     private readonly JsonSerializerOptions _options = new()
     {
+        ReferenceHandler = ReferenceHandler.IgnoreCycles,
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
             Modifiers = { SerializerModifiers.IncludeInternalProperties }

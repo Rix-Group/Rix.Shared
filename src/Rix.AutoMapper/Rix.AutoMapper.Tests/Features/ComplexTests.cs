@@ -20,6 +20,9 @@ public class ComplexTests
             }]
         };
 
+        // Check circular references are not copied
+        obj.Reference = obj;
+
         IRixMapper mapper = new RixMapper();
 
         // ACT
@@ -27,6 +30,7 @@ public class ComplexTests
 
         // ASSERT
         Assert.Equal("Complex 🙂", result.Name);
+        Assert.Null(result.Reference);
         Assert.Single(result.SimpleObjects);
 
         MySimpleObjectDto simple = result.SimpleObjects[0];
