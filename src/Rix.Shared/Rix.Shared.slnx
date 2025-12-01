@@ -1,7 +1,0 @@
-<Solution>
-  <Folder Name="/Solution Items/">
-    <File Path="../../README.md" />
-  </Folder>
-  <Project Path="Rix.AutoMapper.Tests/Rix.AutoMapper.Tests.csproj" />
-  <Project Path="Rix.AutoMapper/Rix.AutoMapper.csproj" />
-</Solution>

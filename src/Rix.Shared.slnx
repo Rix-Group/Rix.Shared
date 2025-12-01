@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Rix.AutoMapper/">
+    <Project Path="Rix.AutoMapper/Rix.AutoMapper.Tests/Rix.AutoMapper.Tests.csproj" />
+    <Project Path="Rix.AutoMapper/Rix.AutoMapper/Rix.AutoMapper.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="../.github/workflows/publish-nuget.yml" />
+    <File Path="../README.md" />
+  </Folder>
+</Solution>

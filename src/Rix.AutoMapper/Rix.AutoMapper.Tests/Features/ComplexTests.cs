@@ -11,7 +11,7 @@ public class ComplexTests
         // ARRANGE
         MyComplexObject obj = new()
         {
-            Name = "Complex",
+            Name = "Complex 🙂", // Testing UTF16
             SimpleObjects = [new()
             {
                 Name = "Test",
@@ -26,7 +26,7 @@ public class ComplexTests
         MyComplexObjectDto result = mapper.Map<MyComplexObject, MyComplexObjectDto>(obj);
 
         // ASSERT
-        Assert.Equal("Complex", result.Name);
+        Assert.Equal("Complex 🙂", result.Name);
         Assert.Single(result.SimpleObjects);
 
         MySimpleObjectDto simple = result.SimpleObjects[0];
