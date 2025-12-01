@@ -6,5 +6,6 @@ namespace Rix.AutoMapper.Tests.Profiles;
 
 internal class MySimpleObjectProfile : IMappingProfile<MySimpleObject, MySimpleObjectDto>
 {
-    public Func<MySimpleObject, MySimpleObjectDto> Mapping => o => o.ToDto();
+    public MySimpleObjectDto Map(MySimpleObject o)
+        => o.ToDto();
 }

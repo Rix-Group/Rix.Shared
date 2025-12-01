@@ -20,7 +20,7 @@ public class RixMapper(params IEnumerable<IMappingProfile> profiles) : IRixMappe
     public TDestination Map<TSource, TDestination>(TSource source)
     {
         if (_profiles.FirstOrDefault(p => p is IMappingProfile<TSource, TDestination>) is IMappingProfile<TSource, TDestination> profile)
-            return profile.Mapping.Invoke(source);
+            return profile.Map(source);
 
         return JsonSerializer.Deserialize<TDestination>(JsonSerializer.SerializeToUtf8Bytes(source, _options), _options)
             ?? throw new Exception("Could not convert type");

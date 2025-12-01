@@ -13,7 +13,7 @@ public interface IMappingProfile;
 public interface IMappingProfile<TSource, TDestination> : IMappingProfile
 {
     /// <summary>
-    /// The function to invoke when mapping from <see cref="TSource"/> to <see cref="TDestination"/>.
+    /// The method to invoke when mapping from <see cref="TSource"/> to <see cref="TDestination"/>.
     /// </summary>
-    public Func<TSource, TDestination> Mapping { get; }
+    public TDestination Map(TSource source);
 }
