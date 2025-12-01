@@ -28,7 +28,9 @@ jobs:
       - name: 🛠️ Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: |
+            9.0.x
+            10.0.x
 
       - name: ⚙️ Restore Dependencies
         run: |
@@ -39,7 +41,8 @@ jobs:
         run: |
           dotnet test ${{ env.TEST_PROJECT_PATH }} \
             --configuration Release \
-            --no-restore
+            --no-restore \
+            --framework net10.0
 
       - name: 📦 Build and Pack NuGet
         id: pack
