@@ -4,11 +4,12 @@
     <Project Path="Rix.AutoMapper/Rix.AutoMapper/Rix.AutoMapper.csproj" />
   </Folder>
   <Folder Name="/Rix.Mediator/">
-    <Project Path="Rix.Mediator/Rix.Mediator/Rix.Mediator.csproj" />
     <Project Path="Rix.Mediator/Rix.Mediator.Tests/Rix.Mediator.Tests.csproj" />
+    <Project Path="Rix.Mediator/Rix.Mediator/Rix.Mediator.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
-    <File Path="../.github/workflows/publish-nuget.yml" />
+    <File Path="../.github/workflows/publish-automapper.yml" />
+    <File Path="../.github/workflows/publish-mediator.yml" />
     <File Path="../README.md" />
   </Folder>
 </Solution>

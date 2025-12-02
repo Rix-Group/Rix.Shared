@@ -6,7 +6,7 @@ internal class RixMediator(IEnumerable<IRixValidator> validators, IEnumerable<IR
     private readonly IEnumerable<IRixValidator> _validators = validators;
     private readonly IEnumerable<IRixHandler> _handlers = handlers;
 
-    public async Task<HandlerResponse<TResponse>> Send<TRequest, TResponse>(TRequest request, CancellationToken ct) where TRequest : IRixRequest
+    public async Task<HandlerResponse<TResponse>> Send<TRequest, TResponse>(TRequest request, CancellationToken ct = default) where TRequest : IRixRequest
     {
         foreach (IRixValidator<TRequest> validator in _validators.OfType<IRixValidator<TRequest>>())
         {
