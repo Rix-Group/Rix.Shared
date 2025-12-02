@@ -12,11 +12,9 @@ public static class ServiceCollectionExtensions
     /// <param name="services">The service collection.</param>
     /// <param name="profiles">Custom mapping profiles.</param>
     /// <returns>The service collection.</returns>
-    public static IServiceCollection AddMapping(this IServiceCollection services, params IEnumerable<IMappingProfile> profiles)
+    public static IServiceCollection AddMapping(this IServiceCollection services, params IList<IMappingProfile> profiles)
     {
-        foreach (IMappingProfile profile in profiles)
-            services.AddSingleton(profile);
-        services.AddSingleton<IRixMapper, RixMapper>();
+        services.AddSingleton<IRixMapper>(new RixMapper(profiles));
         return services;
     }
 }
